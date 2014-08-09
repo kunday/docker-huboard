@@ -29,6 +29,7 @@ RUN apt-get -qq -y install couchdb memcached nodejs
 RUN apt-get clean
 RUN gem install foreman
 
+RUN mkdir -p /var/run/couchdb
 # Install Huboard
 RUN git clone -b master https://github.com/rauhryan/huboard.git /app
 RUN cd /app; bundle install;
@@ -36,5 +37,6 @@ ADD .env /app/.env
 ADD Procfile /app/Procfile
 
 # Run Huboard instance
-EXPOSE 5000
+EXPOSE 3000
+EXPOSE 5200
 CMD foreman start -f /app/Procfile
