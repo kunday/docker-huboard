@@ -1,5 +1,3 @@
-FROM ubuntu
-
 FROM ubuntu:14.04
 
 ## Use closest mirror
